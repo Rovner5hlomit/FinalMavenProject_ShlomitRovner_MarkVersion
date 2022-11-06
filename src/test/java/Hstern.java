@@ -5,7 +5,7 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
-public class Hstern {
+public class Hstern extends Files {
 
     public static final String HSTERNURL = "https://www.hstern.co.il/";
     public static final String EMAILPOPUPXPATH = "//*[@id=\"newsletter-modal\"]/div/div/div[2]";
@@ -26,32 +26,32 @@ public class Hstern {
 
 
 
-    public static void elementsHTMLAssertAndParagraph() throws IOException {
+    void elementsHTMLAssertAndParagraph() throws IOException {
 
-        Driver.driver.get(HSTERNURL);
-        if (Driver.driver.findElement(By.xpath(EMAILPOPUPXPATH)).isDisplayed()) {
+        driver.get(HSTERNURL);
+        if (driver.findElement(By.xpath(EMAILPOPUPXPATH)).isDisplayed()) {
 
-            Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAILPOPUPCLOSEXPATH))).click();
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAILPOPUPCLOSEXPATH))).click();
 
         }
 
-        Driver.jse.executeScript(Driver.SCROLLDOWNTOBOTTM);
-        Actions actions = new Actions(Driver.driver);
-        actions.doubleClick(Driver.wait
+        jse.executeScript(SCROLLDOWNTOBOTTM);
+        Actions actions = new Actions(driver);
+        actions.doubleClick(wait
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(NEWSLETTERSIGNUPXPATH)))).perform();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.id(EMAILFIELDID))).sendKeys(EMAIL);
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.id(TERMSAGREECHECKBOXID))).click();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.id(TERMSAGREECHECKBOXID))).click();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(SENDBTNXPATH))).click();
-        actions.contextClick(Driver.wait
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(EMAILFIELDID))).sendKeys(EMAIL);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(TERMSAGREECHECKBOXID))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(TERMSAGREECHECKBOXID))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(SENDBTNXPATH))).click();
+        actions.contextClick(wait
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(ABOUTLINKXPATH)))).perform();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(PRISMASLINKXPATH))).click();
-        Assert.assertEquals(Driver.driver.getCurrentUrl(), PRISMASURL);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(PRISMASLINKXPATH))).click();
+        Assert.assertEquals(driver.getCurrentUrl(), PRISMASURL);
 
-        Files.screenShot(Driver.driver, "PrismasParagraph");
-        String paragraphText = Driver.wait
+        screenShot(driver, "PrismasParagraph");
+        String paragraphText = wait
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(PARAGRAPHXPATH))).getText();
-        Files.createFile("CopiedParagraphText", paragraphText);
+        createFile("CopiedParagraphText", paragraphText);
 
     }
 

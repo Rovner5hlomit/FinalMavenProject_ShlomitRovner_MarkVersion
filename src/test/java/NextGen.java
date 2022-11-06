@@ -7,12 +7,12 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
-public class NextGen {
+public class NextGen extends Files {
 
     public static final String NEXTGENFORMURL = "https://nxtgenaiacademy.com/demo-site/";
     public static final String COUNTRYDROPDOWNID = "vfb-13-country";
     public static final String DATEFIELDID = "vfb-18";
-    public static final String CHOSENDATEBTNXPATH = "//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[5]/td[5]/a";
+    public static final String CHOSENDATEBTNXPATH = "//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[7]/a";
     public static final String QAAUTOMATIONMENUXPATH = "//*[@id=\"menu-item-4131\"]/a/span";
     public static final String PRACTICEAUTOMATIONSELECTIONID = "menu-item-4157";
     public static final String ALERTSELECTIONID = "menu-item-4132";
@@ -26,40 +26,40 @@ public class NextGen {
     public static final String RESULTFIELDTWOID = "demoone";
 
 
-    public static void dropDownAndAlert() throws IOException {
+    void dropDownAndAlert() throws IOException {
 
-        Driver.driver.get(NEXTGENFORMURL);
-        Select dropDown = new Select(Driver.driver.findElement(By.id(COUNTRYDROPDOWNID)));
+        driver.get(NEXTGENFORMURL);
+        Select dropDown = new Select(driver.findElement(By.id(COUNTRYDROPDOWNID)));
         dropDown.selectByValue("Brazil");
-        Files.screenShot(Driver.driver, "Brazil");
+        screenShot(driver, "Brazil");
 
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.id(DATEFIELDID))).click();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOSENDATEBTNXPATH))).click();
-        WebElement resultDate = Driver.wait
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(DATEFIELDID))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOSENDATEBTNXPATH))).click();
+        WebElement resultDate = wait
                         .until(ExpectedConditions.presenceOfElementLocated(By.id(DATEFIELDID)));
         System.out.println("Chosen date is: " + resultDate.getAttribute("value"));
 
-        Driver.driver.manage().window().setSize(new Dimension(1500, 1500));
-        Driver.jse.executeScript(Driver.SCROLLUPTOTOP);
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(QAAUTOMATIONMENUXPATH))).click();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.id(PRACTICEAUTOMATIONSELECTIONID))).click();
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.id(ALERTSELECTIONID))).click();
-        Assert.assertEquals(Driver.driver.getCurrentUrl(), NEXTGENALERTURL);
+        driver.manage().window().setSize(new Dimension(1500, 1500));
+        jse.executeScript(SCROLLUPTOTOP);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(QAAUTOMATIONMENUXPATH))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(PRACTICEAUTOMATIONSELECTIONID))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(ALERTSELECTIONID))).click();
+        Assert.assertEquals(driver.getCurrentUrl(), NEXTGENALERTURL);
 
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(CONFIRMALERTBOXBTNXPATH))).click();
-        Driver.driver.switchTo().alert().dismiss();
-        WebElement resultFieldOne = Driver.wait
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(CONFIRMALERTBOXBTNXPATH))).click();
+        driver.switchTo().alert().dismiss();
+        WebElement resultFieldOne = wait
                 .until(ExpectedConditions.presenceOfElementLocated(By.id(RESULTFIELDONEID)));
         System.out.println(resultFieldOne.getText());
-        Files.screenShot(Driver.driver, "You clicked on Cancel");
+        screenShot(driver, "You clicked on Cancel");
 
-        Driver.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(PROMPTALERTBOXBTNXPATH))).click();
-        Driver.driver.switchTo().alert().sendKeys("yes");
-        Driver.driver.switchTo().alert().accept();
-        WebElement resultFieldTwo = Driver.wait
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(PROMPTALERTBOXBTNXPATH))).click();
+        driver.switchTo().alert().sendKeys("yes");
+        driver.switchTo().alert().accept();
+        WebElement resultFieldTwo = wait
                         .until(ExpectedConditions.presenceOfElementLocated(By.id(RESULTFIELDTWOID)));
         System.out.println(resultFieldTwo.getText());
-        Files.screenShot(Driver.driver, "Thanks for Liking Automation");
+        screenShot(driver, "Thanks for Liking Automation");
 
     }
 

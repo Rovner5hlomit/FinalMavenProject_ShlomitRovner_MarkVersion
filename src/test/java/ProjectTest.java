@@ -2,61 +2,66 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class ProjectTest {
+public class ProjectTest extends Files {
+
+    KilooGames kilooGames = new KilooGames();
+    Hstern hstern = new Hstern();
+    NextGen nextGen = new NextGen();
+    Wiki wiki = new Wiki();
 
     @BeforeClass
-    static void setUpDesktop() {
+    void setUpDesktop() {
 
-        Files.createFolder(Files.FOLDERPATH, Files.FOLDERNAME);
-
-    }
-
-    @AfterClass
-    static void quitDriver() {
-
-        Driver.driver.quit();
+        createFolder(FOLDERPATH, FOLDERNAME);
 
     }
 
     @Test
     void navigationSimple() {
 
-        KilooGames.simpleNavigation();
+        kilooGames.simpleNavigation();
 
     }
 
     @Test
     void resizeSimple() {
 
-        KilooGames.resizing();
+        kilooGames.resizing();
 
     }
 
     @Test
     void navigateComplex() throws IOException {
 
-        KilooGames.winTabNavigationScrollAndScreenshots();
+        kilooGames.winTabNavigationScrollAndScreenshots();
 
     }
 
     @Test
     void elementsHTMLOne() throws IOException {
 
-        Hstern.elementsHTMLAssertAndParagraph();
+        hstern.elementsHTMLAssertAndParagraph();
 
     }
 
     @Test
     void elementsHTMLTwo() throws IOException {
 
-        NextGen.dropDownAndAlert();
+        nextGen.dropDownAndAlert();
 
     }
 
     @Test
     void copyWikiParagraph() throws IOException {
 
-        Wiki.copyWikiParagraph();
+        wiki.copyWikiParagraph();
+
+    }
+
+    @AfterClass
+    void quitDriver() {
+
+        driver.quit();
 
     }
 

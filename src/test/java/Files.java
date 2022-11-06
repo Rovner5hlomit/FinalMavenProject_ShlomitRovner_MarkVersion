@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Files {
+public class Files extends Driver {
 
     public static final String FOLDERPATH = "C:\\Users\\shlomitr\\Desktop\\";
     public static final String FOLDERNAME = "ShlomitFolder";
