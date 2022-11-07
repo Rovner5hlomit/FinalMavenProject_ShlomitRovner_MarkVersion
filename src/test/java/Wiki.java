@@ -3,7 +3,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
 
-public class Wiki extends Files {
+public class Wiki extends Driver {
 
     public static final String WIKIHAPPYBDAYURL = "https://en.wikipedia.org/wiki/Happy_Birthday_to_You";
     public static final String LYRICSTITLEID = "Lyrics";

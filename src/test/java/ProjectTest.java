@@ -2,17 +2,20 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class ProjectTest extends Files {
+public class ProjectTest {
 
+    Files files = new Files();
     KilooGames kilooGames = new KilooGames();
     Hstern hstern = new Hstern();
     NextGen nextGen = new NextGen();
     Wiki wiki = new Wiki();
 
+    Driver[] myPages = {kilooGames, hstern, nextGen, wiki};
+
     @BeforeClass
     void setUpDesktop() {
 
-        createFolder(FOLDERPATH, FOLDERNAME);
+        files.createFolder(Files.FOLDERPATH, Files.FOLDERNAME);
 
     }
 
@@ -59,9 +62,13 @@ public class ProjectTest extends Files {
     }
 
     @AfterClass
-    void quitDriver() {
+    void quit() {
 
-        driver.quit();
+        for (int i = 0; i < myPages.length; i++) {
+
+            myPages[i].quitDriver();
+
+        }
 
     }
 

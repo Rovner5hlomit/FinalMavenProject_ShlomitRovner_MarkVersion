@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
-public class NextGen extends Files {
+public class NextGen extends Driver {
 
     public static final String NEXTGENFORMURL = "https://nxtgenaiacademy.com/demo-site/";
     public static final String COUNTRYDROPDOWNID = "vfb-13-country";

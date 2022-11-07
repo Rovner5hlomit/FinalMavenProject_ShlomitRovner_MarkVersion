@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Files extends Driver {
+public class Files {
 
     public static final String FOLDERPATH = "C:\\Users\\shlomitr\\Desktop\\";
     public static final String FOLDERNAME = "ShlomitFolder";
@@ -15,7 +15,7 @@ public class Files extends Driver {
     public static final String TXT = ".txt";
 
 
-    public static void createFolder(String folderPath, String folderName) {
+    void createFolder(String folderPath, String folderName) {
 
         File folder = new File(folderPath + folderName);
         if (folder.mkdir()) {
@@ -26,7 +26,7 @@ public class Files extends Driver {
 
     }
 
-    public static void createFile(String fileName, String text) {
+    void createFile(String fileName, String text) {
 
         File file = new File(FOLDERPATH + FOLDERNAME + "\\" + fileName + TXT);
         try {
@@ -46,13 +46,12 @@ public class Files extends Driver {
 
     }
 
-    public static void screenShot(WebDriver driver, String fileName) throws IOException {
+    void screenShot(WebDriver driver, String fileName) throws IOException {
 
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File(FOLDERPATH + FOLDERNAME + "\\" + fileName + JPG));
 
 
     }
-
 
 }

@@ -5,7 +5,7 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
-public class Hstern extends Files {
+public class Hstern extends Driver {
 
     public static final String HSTERNURL = "https://www.hstern.co.il/";
     public static final String EMAILPOPUPXPATH = "//*[@id=\"newsletter-modal\"]/div/div/div[2]";

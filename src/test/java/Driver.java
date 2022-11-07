@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Driver {
+public class Driver extends Files {
 
     public static final String CHROMEKEY = "webdriver.chrome.driver";
     public static final String CHROMEPATH = "res\\chromedriver.exe";
@@ -18,14 +18,18 @@ public class Driver {
     public static final String SCROLLTOELEMENT = "arguments[0].scrollIntoView();";
 
 
-    public static WebDriver setupDriver() {
+    WebDriver setupDriver() {
         System.setProperty(CHROMEKEY, CHROMEPATH);
         return new ChromeDriver();
     }
 
-    public static WebDriver driver = setupDriver();
-    public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    WebDriver driver = setupDriver();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-    public static JavascriptExecutor jse = (JavascriptExecutor)driver;
+    JavascriptExecutor jse = (JavascriptExecutor)driver;
+
+    void quitDriver() {
+        driver.quit();
+    }
 
 }

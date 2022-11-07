@@ -3,9 +3,10 @@ import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import java.io.File;
 import java.io.IOException;
 
-public class KilooGames extends Files {
+public class KilooGames extends Driver {
 
     public static final String THINKINGGAMESURL = "https://www.kiloo.com/en/thinking-games/";
     public static final String ALLGAMESBTNXPATH = "//*[@id=\"games\"]/a/img";
@@ -50,7 +51,7 @@ public class KilooGames extends Files {
         String allCategoriesWindow = driver.getWindowHandle();
         driver.switchTo().window(thinkingGamesWindow);
         jse.executeScript(SCROLLDOWNTOBOTTM);
-        Files.screenShot(driver, "bottomThinkingPage");
+        screenShot(driver, "bottomThinkingPage");
         jse.executeScript(SCROLLUPTOHALFPAGE);
         screenShot(driver, "halfWayUpThinkingPage");
         driver.switchTo().window(allGamesTab);
