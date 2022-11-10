@@ -6,7 +6,7 @@ import org.testng.Assert;
 import java.io.File;
 import java.io.IOException;
 
-public class KilooGames extends Driver {
+public class KilooGames extends Action {
 
     public static final String THINKINGGAMESURL = "https://www.kiloo.com/en/thinking-games/";
     public static final String ALLGAMESBTNXPATH = "//*[@id=\"games\"]/a/img";
@@ -22,8 +22,8 @@ public class KilooGames extends Driver {
     void simpleNavigation() {
 
         driver.get(THINKINGGAMESURL);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ALLGAMESBTNXPATH))).click();
-        Assert.assertEquals(driver.getCurrentUrl(), ALLGAMESURL);
+        clickByXPath(ALLGAMESBTNXPATH);
+        assertion(ALLGAMESURL);
         driver.navigate().back();
         driver.navigate().forward();
         driver.navigate().refresh();

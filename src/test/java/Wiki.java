@@ -3,7 +3,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
 
-public class Wiki extends Driver {
+public class Wiki extends Action {
 
     public static final String WIKIHAPPYBDAYURL = "https://en.wikipedia.org/wiki/Happy_Birthday_to_You";
     public static final String LYRICSTITLEID = "Lyrics";
@@ -16,8 +16,7 @@ public class Wiki extends Driver {
         jse.executeScript(SCROLLTOELEMENT, wait
                 .until(ExpectedConditions.presenceOfElementLocated(By.id(LYRICSTITLEID))));
         screenShot(driver, "WikiHappyBDaySong");
-        String wikiParagraphText = wait
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SONGPARAGRAPHXPATH))).getText();
+        String wikiParagraphText = getTextByXPath(SONGPARAGRAPHXPATH);
         createFile("WikiHappyBDay", wikiParagraphText);
 
     }

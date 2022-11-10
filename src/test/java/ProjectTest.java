@@ -41,14 +41,19 @@ public class ProjectTest {
     }
 
     @Test
-    void elementsHTMLOne() throws IOException {
+    void elementsHTMLOne() {
+        hstern.elementsHTMLActions();
+    }
+
+    @Test
+    void elementsHTMLTwo() throws IOException {
 
         hstern.elementsHTMLAssertAndParagraph();
 
     }
 
     @Test
-    void elementsHTMLTwo() throws IOException {
+    void elementsHTMLThree() throws IOException {
 
         nextGen.dropDownAndAlert();
 
