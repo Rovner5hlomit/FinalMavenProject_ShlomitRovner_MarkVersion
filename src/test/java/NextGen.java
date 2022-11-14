@@ -26,41 +26,76 @@ public class NextGen extends Action {
     public static final String RESULTFIELDTWOID = "demoone";
 
 
-    void dropDownAndAlert() throws IOException {
-
+    public void goToNextGenFormURL() {
         driver.get(NEXTGENFORMURL);
-        Select dropDown = new Select(driver.findElement(By.id(COUNTRYDROPDOWNID)));
-        dropDown.selectByValue("Brazil");
+    }
+
+    public void selectCountryFromDropDown() {
+        selectDropDownValueByID(COUNTRYDROPDOWNID, "Brazil");
+    }
+
+    public void screenshotSelectedCountryBrazil() throws IOException {
         screenShot(driver, "Brazil");
+    }
 
+    public void clickDateField() {
         clickByID(DATEFIELDID);
+    }
+
+    public void clickChosenDate() {
         clickByXPath(CHOSENDATEBTNXPATH);
-        WebElement resultDate = wait
-                        .until(ExpectedConditions.presenceOfElementLocated(By.id(DATEFIELDID)));
-        System.out.println("Chosen date is: " + resultDate.getAttribute("value"));
+    }
 
-        driver.manage().window().setSize(new Dimension(1500, 1500));
-        jse.executeScript(SCROLLUPTOTOP);
+    public void printResultDate() {
+        System.out.println("Chosen date is: " + resultFieldByID(DATEFIELDID).getAttribute("value"));
+    }
+
+    public void clickQAAutomationMenu() {
         clickByXPath(QAAUTOMATIONMENUXPATH);
+    }
+
+    public void clickPracticeAutomationSelection() {
         clickByID(PRACTICEAUTOMATIONSELECTIONID);
+    }
+
+    public void clickAlertSelection() {
         clickByID(ALERTSELECTIONID);
+    }
+
+    public void assertNextgenAlertURL() {
         assertion(NEXTGENALERTURL);
+    }
 
+    public void clickConfirmAlert() {
         clickByXPath(CONFIRMALERTBOXBTNXPATH);
+    }
+
+    public void dismissAlert() {
         driver.switchTo().alert().dismiss();
-        WebElement resultFieldOne = wait
-                .until(ExpectedConditions.presenceOfElementLocated(By.id(RESULTFIELDONEID)));
-        System.out.println(resultFieldOne.getText());
+    }
+
+    public void printMessageResult(String resultID) {
+        System.out.println(resultFieldByID(resultID).getText());
+    }
+
+    public void screenshotClickedOnCancelMessage() throws IOException {
         screenShot(driver, "You clicked on Cancel");
+    }
 
+    public void clickPromptAlert() {
         clickByXPath(PROMPTALERTBOXBTNXPATH);
-        driver.switchTo().alert().sendKeys("yes");
-        driver.switchTo().alert().accept();
-        WebElement resultFieldTwo = wait
-                        .until(ExpectedConditions.presenceOfElementLocated(By.id(RESULTFIELDTWOID)));
-        System.out.println(resultFieldTwo.getText());
-        screenShot(driver, "Thanks for Liking Automation");
+    }
 
+    public void sendKeysToAlert(String s) {
+        driver.switchTo().alert().sendKeys(s);
+    }
+
+    public void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
+
+    public void screenshotThanksForLikingAutomationMessage() throws IOException {
+        screenShot(driver, "Thanks for Liking Automation");
     }
 
 }

@@ -15,7 +15,7 @@ public class Files {
     public static final String TXT = ".txt";
 
 
-    void createFolder(String folderPath, String folderName) {
+    public void createFolder(String folderPath, String folderName) {
 
         File folder = new File(folderPath + folderName);
         if (folder.mkdir()) {
@@ -26,7 +26,7 @@ public class Files {
 
     }
 
-    void createFile(String fileName, String text) {
+    public void createFile(String fileName, String text) {
 
         File file = new File(FOLDERPATH + FOLDERNAME + "\\" + fileName + TXT);
         try {
@@ -46,7 +46,7 @@ public class Files {
 
     }
 
-    void screenShot(WebDriver driver, String fileName) throws IOException {
+    public void screenShot(WebDriver driver, String fileName) throws IOException {
 
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File(FOLDERPATH + FOLDERNAME + "\\" + fileName + JPG));

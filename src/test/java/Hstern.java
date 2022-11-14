@@ -22,29 +22,45 @@ public class Hstern extends Action {
 
 
 
-    void elementsHTMLActions()  {
-
+    public void goToHSternURL() {
         driver.get(HSTERNURL);
-
-        jse.executeScript(SCROLLDOWNTOBOTTM);
-        doubleClickByXPath(NEWSLETTERSIGNUPXPATH);
-        sendKeysByID(EMAILFIELDID, EMAIL);
-        clickByID(TERMSAGREECHECKBOXID);
-        clickByID(TERMSAGREECHECKBOXID);
-        contextClickByXPath(ABOUTLINKXPATH);
-
     }
 
-        void elementsHTMLAssertAndParagraph() throws IOException {
+    public void doubleClickNewsLetterSignUp() {
+        doubleClickByXPath(NEWSLETTERSIGNUPXPATH);
+    }
 
-            driver.get(HSTERNURL);
-            clickByXPath(PRISMASLINKXPATH);
-            assertion(PRISMASURL);
+    public void insertEmail() {
+        sendKeysByID(EMAILFIELDID, EMAIL);
+    }
 
-            screenShot(driver, "PrismasParagraph");
-            String paragraphText = getTextByXPath(PARAGRAPHXPATH);
-            createFile("CopiedParagraphText", paragraphText);
+    public void clickAgreeToTermsCheckBox() {
+        clickByID(TERMSAGREECHECKBOXID);
+    }
 
+    public void rightClickAboutLink() {
+        contextClickByXPath(ABOUTLINKXPATH);
+    }
+
+
+    public void clickPrismasLink() {
+        clickByXPath(PRISMASLINKXPATH);
+    }
+
+    public void assertPrismasURL() {
+        assertion(PRISMASURL);
+    }
+
+    public void screenshotPrismasParagraph() throws IOException {
+        screenShot(driver, "PrismasParagraph");
+    }
+
+    public String getPrismasParagraphText() {
+        return getParagraphText(PARAGRAPHXPATH);
+    }
+
+    public void copyPrismasParagraphTextToFile() {
+        copyParagraphTextToFile("CopiedParagraphText", getPrismasParagraphText());
     }
 
 }

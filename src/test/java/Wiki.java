@@ -10,15 +10,24 @@ public class Wiki extends Action {
     public static final String SONGPARAGRAPHXPATH = "//*[@id=\"mw-content-text\"]/div[1]/blockquote/div/p";
 
 
-    void copyWikiParagraph() throws IOException {
-
+    void goToWikipediaBDayURL() {
         driver.get(WIKIHAPPYBDAYURL);
-        jse.executeScript(SCROLLTOELEMENT, wait
-                .until(ExpectedConditions.presenceOfElementLocated(By.id(LYRICSTITLEID))));
-        screenShot(driver, "WikiHappyBDaySong");
-        String wikiParagraphText = getTextByXPath(SONGPARAGRAPHXPATH);
-        createFile("WikiHappyBDay", wikiParagraphText);
+    }
 
+    public void scrollToLyricsTitle() {
+        scrollToElementByID(LYRICSTITLEID);
+    }
+
+    public void screenshotHappyBDay() throws IOException {
+        screenShot(driver, "WikiHappyBDaySong");
+    }
+
+    public String getSongParagraphText() {
+        return getParagraphText(SONGPARAGRAPHXPATH);
+    }
+
+    public void copySongParagraphTextToFile() {
+        copyParagraphTextToFile("WikiHappyBDay", getSongParagraphText());
     }
 
 }

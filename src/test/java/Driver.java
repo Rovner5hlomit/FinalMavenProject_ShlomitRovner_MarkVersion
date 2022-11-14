@@ -18,7 +18,7 @@ public class Driver extends Files {
     public static final String SCROLLTOELEMENT = "arguments[0].scrollIntoView();";
 
 
-    WebDriver setupDriver() {
+    public WebDriver setupDriver() {
         System.setProperty(CHROMEKEY, CHROMEPATH);
         return new ChromeDriver();
     }
@@ -28,7 +28,7 @@ public class Driver extends Files {
 
     JavascriptExecutor jse = (JavascriptExecutor)driver;
 
-    void quitDriver() {
+    public void quitDriver() {
         driver.quit();
     }
 

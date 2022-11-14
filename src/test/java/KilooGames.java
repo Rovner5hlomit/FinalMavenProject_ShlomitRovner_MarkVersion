@@ -19,51 +19,76 @@ public class KilooGames extends Action {
 
 
 
-    void simpleNavigation() {
-
+    public void goToThinkingGamesURL() {
         driver.get(THINKINGGAMESURL);
+    }
+
+    public void clickAllGamesBtn() {
         clickByXPath(ALLGAMESBTNXPATH);
+    }
+
+    public void asserAllGamesURL() {
         assertion(ALLGAMESURL);
-        driver.navigate().back();
-        driver.navigate().forward();
-        driver.navigate().refresh();
-
     }
 
-    void resizing() {
 
-        driver.get(THINKINGGAMESURL);
-        driver.manage().window().maximize();
-        driver.manage().window().fullscreen();
-        driver.manage().window().minimize();
 
+
+
+    public String thinkingGamesHandle() {
+        return getWindowHandle();
     }
 
-    void winTabNavigationScrollAndScreenshots() throws IOException {
-
-        driver.get(THINKINGGAMESURL);
-        String thinkingGamesWindow = driver.getWindowHandle();
-        driver.switchTo().newWindow(WindowType.TAB);
+    public void navigateToAllGamesURL() {
         driver.navigate().to(ALLGAMESURL);
-        String allGamesTab = driver.getWindowHandle();
-        driver.switchTo().newWindow(WindowType.WINDOW);
-        driver.navigate().to(ALLCATEGORIESURL);
-        String allCategoriesWindow = driver.getWindowHandle();
-        driver.switchTo().window(thinkingGamesWindow);
-        jse.executeScript(SCROLLDOWNTOBOTTM);
-        screenShot(driver, "bottomThinkingPage");
-        jse.executeScript(SCROLLUPTOHALFPAGE);
-        screenShot(driver, "halfWayUpThinkingPage");
-        driver.switchTo().window(allGamesTab);
-        jse.executeScript(SCROLLDOWNTOHALFPAGE);
-        screenShot(driver, "halfWayDownAllGamesPage");
-        jse.executeScript(SCROLLUPTOTOP);
-        screenShot(driver, "topAllGamesPage");
-        driver.switchTo().window(allCategoriesWindow);
-        jse.executeScript(SCROLLTOELEMENT,
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(CATGAMESXPATH))));
-        screenShot(driver, "catGamesAllCategoriesPage");
+    }
 
+    public void navigateToAllCategoriesURL() {
+        driver.navigate().to(ALLCATEGORIESURL);
+    }
+
+    public String allGamesHandle() {
+        return getWindowHandle();
+    }
+
+    public String allCategoriesHandle() {
+        return getWindowHandle();
+    }
+
+    public void switchToThinkingGames() {
+        switchToWindow(thinkingGamesHandle());
+    }
+
+    public void screenshotBottomThinkingPage() throws IOException {
+        screenShot(driver, "bottomThinkingPage");
+    }
+
+    public void screenshotHalfWayThinkingPage() throws IOException {
+        screenShot(driver, "halfWayUpThinkingPage");
+    }
+
+    public void switchToAllGames() {
+        switchToWindow(allGamesHandle());
+    }
+
+    public void screenshotHalfWayAllGamesPage() throws IOException {
+        screenShot(driver, "halfWayDownAllGamesPage");
+    }
+
+    public void screenshotTopAllGamesPage() throws IOException {
+        screenShot(driver, "topAllGamesPage");
+    }
+
+    public void switchToAllCategories() {
+        switchToWindow(allCategoriesHandle());
+    }
+
+    public void scrollToCatGames() {
+        scrollToElementByXPath(CATGAMESXPATH);
+    }
+
+    public void screenshotCatGames() throws IOException {
+        screenShot(driver, "catGamesAllCategoriesPage");
     }
 
 }
