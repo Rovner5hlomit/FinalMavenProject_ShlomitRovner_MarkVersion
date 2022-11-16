@@ -70,10 +70,6 @@ public class NextGen extends Action {
         clickByXPath(CONFIRMALERTBOXBTNXPATH);
     }
 
-//    public void dismissAlert() {
-//        driver.switchTo().alert().dismiss();
-//    }
-
     public void printMessageResult(String resultID) {
         System.out.println(resultFieldByID(resultID).getText());
     }
