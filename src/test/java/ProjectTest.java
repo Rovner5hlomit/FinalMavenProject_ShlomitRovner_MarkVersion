@@ -5,13 +5,12 @@ import java.io.IOException;
 public class ProjectTest {
 
     Files files = new Files();
-    Action action = new Action();
     KilooGames kilooGames = new KilooGames();
     Hstern hstern = new Hstern();
     NextGen nextGen = new NextGen();
     Wiki wiki = new Wiki();
 
-    Driver[] myPages = {kilooGames, hstern, nextGen, wiki, action};
+    Driver[] myPages = {kilooGames, hstern, nextGen, wiki};
 
     @BeforeClass
     void setUpDesktop() {
@@ -26,9 +25,9 @@ public class ProjectTest {
         kilooGames.goToThinkingGamesURL();
         kilooGames.clickAllGamesBtn();
         kilooGames.asserAllGamesURL();
-        action.pageBack();
-        action.pageForward();
-        action.pageRefresh();
+        kilooGames.pageBack();
+        kilooGames.pageForward();
+        kilooGames.pageRefresh();
 
     }
 
@@ -36,9 +35,9 @@ public class ProjectTest {
     void resizing() {
 
         kilooGames.goToThinkingGamesURL();
-        action.maximizeWindow();
-        action.windowFullscreen();
-        action.minimizeWindow();
+        kilooGames.maximizeWindow();
+        kilooGames.windowFullscreen();
+        kilooGames.minimizeWindow();
 
     }
 
@@ -47,21 +46,21 @@ public class ProjectTest {
 
         kilooGames.goToThinkingGamesURL();
         kilooGames.thinkingGamesHandle();
-        action.openNewTab();
+        kilooGames.openNewTab();
         kilooGames.navigateToAllGamesURL();
         kilooGames.allGamesHandle();
-        action.openNewWindow();
+        kilooGames.openNewWindow();
         kilooGames.navigateToAllCategoriesURL();
         kilooGames.allCategoriesHandle();
         kilooGames.switchToThinkingGames();
-        action.scrollDownToBottom();
+        kilooGames.scrollDownToBottom();
         kilooGames.screenshotBottomThinkingPage();
-        action.scrollUpHalfPage();
+        kilooGames.scrollUpHalfPage();
         kilooGames.screenshotHalfWayThinkingPage();
         kilooGames.switchToAllGames();
-        action.scrollDownHalfPage();
+        kilooGames.scrollDownHalfPage();
         kilooGames.screenshotHalfWayAllGamesPage();
-        action.scrollUpToTop();
+        kilooGames.scrollUpToTop();
         kilooGames.screenshotTopAllGamesPage();
         kilooGames.switchToAllCategories();
         kilooGames.scrollToCatGames();
@@ -73,7 +72,7 @@ public class ProjectTest {
     void elementsHTMLActions() {
 
         hstern.goToHSternURL();
-        action.scrollDownToBottom();
+        hstern.scrollDownToBottom();
         hstern.doubleClickNewsLetterSignUp();
         hstern.insertEmail();
         hstern.clickAgreeToTermsCheckBox();
@@ -102,8 +101,8 @@ public class ProjectTest {
         nextGen.clickDateField();
         nextGen.clickChosenDate();
         nextGen.printResultDate();
-        action.setWindowSize();
-        action.scrollUpToTop();
+        nextGen.setWindowSize();
+        nextGen.scrollUpToTop();
         nextGen.clickQAAutomationMenu();
         nextGen.clickPracticeAutomationSelection();
         nextGen.clickAlertSelection();

@@ -116,6 +116,18 @@ public class Action extends Driver{
         driver.manage().window().setSize(new Dimension(1500, 1500));
     }
 
+    public void dismissAlert() {
+        driver.switchTo().alert().dismiss();
+    }
+
+    public void sendKeysToAlert(String s) {
+        driver.switchTo().alert().sendKeys(s);
+    }
+
+    public void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
+
     public WebElement resultFieldByID(String resultID) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.id(resultID)));
     }

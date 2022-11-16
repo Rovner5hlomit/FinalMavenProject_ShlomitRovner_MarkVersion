@@ -70,9 +70,9 @@ public class NextGen extends Action {
         clickByXPath(CONFIRMALERTBOXBTNXPATH);
     }
 
-    public void dismissAlert() {
-        driver.switchTo().alert().dismiss();
-    }
+//    public void dismissAlert() {
+//        driver.switchTo().alert().dismiss();
+//    }
 
     public void printMessageResult(String resultID) {
         System.out.println(resultFieldByID(resultID).getText());
@@ -84,14 +84,6 @@ public class NextGen extends Action {
 
     public void clickPromptAlert() {
         clickByXPath(PROMPTALERTBOXBTNXPATH);
-    }
-
-    public void sendKeysToAlert(String s) {
-        driver.switchTo().alert().sendKeys(s);
-    }
-
-    public void acceptAlert() {
-        driver.switchTo().alert().accept();
     }
 
     public void screenshotThanksForLikingAutomationMessage() throws IOException {
